@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    image: my-web-app:1
+    ports:
+     - "3000:3000"
+    deploy:
+      replicas: 4
+      update_config:
+        parallelism: 1
+        delay: 10s
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 100M
+    stop_grace_period: 90s
